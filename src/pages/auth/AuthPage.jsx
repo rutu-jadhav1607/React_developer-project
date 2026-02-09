@@ -93,7 +93,7 @@ const AuthPage = () => {
                             <a href="#" className="social">
                                 <img src={googleIcon} alt="Google" className="social-icon" />
                             </a>
-                            <a href="#" className="social">
+                            <a href="#" className="social"> //chnage
                                 <img src={facebookIcon} alt="Facebook" className="social-icon" />
                             </a>
                         </div>
