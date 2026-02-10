@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './auth.css';
 import logo from '../../assets/common/logo.png';
 import facebookIcon from '../../components/facebook.png';
 import googleIcon from '../../components/google.png';
+import backgroundImage from '../../assets/auth/vivah2.jpg';
 
 
 const AuthPage = () => {
@@ -11,6 +13,7 @@ const AuthPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [otp, setOtp] = useState('');
+    const navigate = useNavigate();
 
     const togglePanel = () => {
         setIsRightPanelActive(!isRightPanelActive);
@@ -29,8 +32,20 @@ const AuthPage = () => {
         setShowOTP(false);
     };
 
+    const handleSignIn = (e) => {
+        e.preventDefault();
+        console.log("Signing in...");
+        navigate('/profile/basic-info');
+    };
+
     return (
         <div className="auth-container">
+            <div
+                className="auth-background"
+                style={{
+                    backgroundImage: `url(${backgroundImage})`
+                }}
+            ></div>
             <div className={`auth-box ${isRightPanelActive ? 'right-panel-active' : ''}`} id="main">
 
                 {/* Sign Up Container */}
@@ -87,21 +102,20 @@ const AuthPage = () => {
 
                 {/* Sign In Container */}
                 <div className="form-container sign-in-container">
-                    <form className="auth-form" action="#">
+                    <form className="auth-form" onSubmit={handleSignIn}>
                         <h1 className="auth-title">Sign In</h1>
                         <div className="social-container">
                             <a href="#" className="social">
                                 <img src={googleIcon} alt="Google" className="social-icon" />
                             </a>
-                            <a href="#" className="social"> //chnage
+                            <a href="#" className="social">
                                 <img src={facebookIcon} alt="Facebook" className="social-icon" />
                             </a>
                         </div>
-                        <p style={{ marginBottom: '10px' }}>Sign in with Email & Password</p>
                         <input type="email" placeholder="Email" className="auth-input" />
                         <input type="password" placeholder="Password" className="auth-input" />
                         <a href="#" style={{ fontSize: '0.9rem', color: '#333', textDecoration: 'none', marginTop: '10px' }}>Forgot your password?</a>
-                        <button className="auth-button">SIGN IN</button>
+                        <button type="submit" className="auth-button">SIGN IN</button>
                     </form>
                 </div>
 

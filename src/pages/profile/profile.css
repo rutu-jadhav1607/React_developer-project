@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+.profile-container {
+    background-color: #FFFFF0;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 40px;
+    padding-bottom: 60px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.section-header {
+    background-color: #800000;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    width: 100%;
+    text-align: left;
+}
+
+.profile-form {
+    width: 100%;
+    max-width: 1000px;
+    padding: 0;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.profile-label {
+    width: 30%;
+    color: #666;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: left;
+    padding-right: 20px;
+}
+
+.input-group {
+    width: 70%;
+    display: flex;
+    gap: 10px;
+}
+
+.profile-input,
+.profile-select {
+    background-color: #FFFFF0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    color: #666;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.profile-input:focus,
+.profile-select:focus {
+    border-color: #800000;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(128, 0, 0, 0.1);
+}
+
+.profile-button {
+    background-color: #800000;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 30px;
+    align-self: center;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.profile-button:hover {
+    background-color: #6a0000;
+}
+
+.profile-button:focus,
+.profile-button:active {
+    transform: scale(0.98);
+    outline: none;
+    border: 2px solid #800000;
+    box-shadow: 0 0 0 4px rgba(128, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-label {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .input-group {
+        width: 100%;
+    }
+}
