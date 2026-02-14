@@ -36,12 +36,14 @@ body {
 
 .auth-box {
     background-color: #fff;
-    border-radius: 80px;
+    border-radius: 50px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
     position: relative;
     overflow: hidden;
-    width: 94vw;
-    height: 92vh;
+    width: 800px;
+    max-width: 95vw;
+    height: 480px;
+    max-height: 95vh;
 }
 
 .form-container {
@@ -156,7 +158,7 @@ body {
 .auth-title {
     font-weight: bold;
     margin: 0;
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: #800000;
 }
 
@@ -166,11 +168,12 @@ body {
 
 
 .auth-subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 300;
     line-height: 20px;
     letter-spacing: 0.5px;
-    margin: 20px 0 30px;
+    margin: 10px 0 10px;
+    /* Further reduced margins */
 }
 
 .ghost {
@@ -185,6 +188,8 @@ body {
     text-transform: uppercase;
     transition: transform 80ms ease-in;
     cursor: pointer;
+    margin-top: -25px;
+    /* Shifted further upward */
 }
 
 
@@ -204,7 +209,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 0 50px;
+    padding: 0 40px;
     height: 100%;
     text-align: center;
 }
@@ -220,6 +225,10 @@ body {
     color: #800000;
     outline: none;
     transition: all 0.3s ease;
+}
+
+.auth-input::placeholder {
+    color: #999;
 }
 
 .auth-input:focus {
@@ -251,7 +260,7 @@ body {
 }
 
 .social-container {
-    margin: 20px 0;
+    margin: 15px 0;
 }
 
 .social-container a {

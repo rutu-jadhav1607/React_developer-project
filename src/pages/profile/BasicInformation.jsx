@@ -1,49 +1,64 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './profile.css';
+import backgroundImage from '../../assets/auth/vivah2.jpg';
 
-const CASTE_OPTIONS = {
-    'Open / General': ['Maratha', 'Brahmin', 'Lingayat', 'Agri'],
-    'OBC': ['Mali', 'Kunbi', 'Teli', 'Vanjari', 'Dhangar'],
-    'SC': ['Mahar', 'Chambhar'],
-    'ST': ['ST-related Caste 1', 'ST-related Caste 2'],
-    'NT': ['NT-related Caste 1', 'NT-related Caste 2'],
-    'VJ / DT': ['VJ/DT-related Caste 1', 'VJ/DT-related Caste 2'],
-    'SBC': ['SBC-related Caste 1', 'SBC-related Caste 2']
-};
-
-const RELIGIONS = ['Hindu', 'Muslim', 'Christian', 'Sikh', 'Jain', 'Buddhist', 'Parsi'];
 const GENDERS = ['Male', 'Female'];
-const COMMUNITIES = ['Open / General', 'OBC', 'SC', 'ST', 'NT', 'VJ / DT', 'SBC'];
 
 const BasicInformation = () => {
-    const [formData, setFormData] = useState({
-        fullName: '',
-        email: '',
-        phone: '+91',
-        gender: '',
-        dob: '',
-        height: '',
-        weight: '',
-        religion: '',
-        community: '',
-        caste: '',
-        subCaste: ''
+    const navigate = useNavigate();
+    const [formData, setFormData] = useState(() => {
+        const saved = localStorage.getItem('profile_step_1');
+        const data = saved ? JSON.parse(saved) : {
+            fullName: '',
+            email: '',
+            phone: '+91',
+            gender: '',
+            dob: '',
+            height: '',
+            weight: '',
+            residence: ''
+        };
+        // Ensure Date of Birth is always blank on initial load as requested
+        return { ...data, dob: '' };
     });
 
     const [progress, setProgress] = useState(0);
+    const [errors, setErrors] = useState({});
 
-    // Dynamic Progress Tracking
+    // Dynamic Progress Tracking and localStorage saving
     useEffect(() => {
+        localStorage.setItem('profile_step_1', JSON.stringify(formData));
+
         const fields = Object.keys(formData);
         const filled = fields.filter(key => {
-            if (key === 'phone') return formData[key] !== '+91' && formData[key].length > 3;
-            if (key === 'subCaste') return true; // Treating subCaste as optional or always valid for pct
-            return formData[key].trim() !== '';
+            if (key === 'phone') return formData[key] !== '+91' && formData[key] && formData[key].length > 3;
+            return formData[key] && formData[key].toString().trim() !== '';
         });
 
-        const pct = Math.round((filled.length / fields.length) * 100);
+        const pct = Math.round((filled.length / fields.length) * 20);
         setProgress(pct);
     }, [formData]);
+
+    const validate = (name, value) => {
+        let error = '';
+        if (!value) value = ''; // Safety check
+
+        if (name === 'email') {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (value && !emailRegex.test(value)) {
+                error = 'Please enter a valid email address.';
+            }
+        }
+        if (name === 'phone') {
+            const phoneDigits = value.toString().replace('+91', '');
+            if (value && (phoneDigits.length !== 10 || !/^\d+$/.test(phoneDigits))) {
+                error = 'Please enter a valid 10-digit mobile number.';
+            }
+        }
+        setErrors(prev => ({ ...prev, [name]: error }));
+        return error;
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -53,16 +68,23 @@ const BasicInformation = () => {
             if (value.length > 13) return;
         }
 
-        setFormData(prev => {
-            const updated = { ...prev, [name]: value };
-            if (name === 'community') updated.caste = '';
-            return updated;
-        });
+        setFormData(prev => ({ ...prev, [name]: value }));
+        validate(name, value);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Profile Data Saved:', formData);
+
+        const emailError = validate('email', formData.email || '');
+        const phoneError = validate('phone', formData.phone || '');
+
+        if (emailError || phoneError) {
+            alert('Please fix the errors before continuing.');
+            return;
+        }
+
+        console.log('Profile Data Saved (Step 1):', formData);
+        navigate('/profile/religious-info');
     };
 
     // Range helpers
@@ -77,6 +99,13 @@ const BasicInformation = () => {
 
     return (
         <div className="profile-page-wrapper">
+            <div
+                className="profile-background"
+                style={{
+                    backgroundImage: `url(${backgroundImage})`
+                }}
+            ></div>
+            <div className="profile-background-overlay"></div>
             <div className="profile-card">
                 {/* Header Progress Section */}
                 <div className="profile-header-section">
@@ -110,7 +139,7 @@ const BasicInformation = () => {
                                 <input
                                     type="text"
                                     name="fullName"
-                                    className="profile-input-field"
+                                    className={`profile-input-field ${formData.fullName ? 'has-selection' : ''}`}
                                     placeholder="Enter your full name"
                                     value={formData.fullName}
                                     onChange={handleChange}
@@ -122,27 +151,29 @@ const BasicInformation = () => {
                                 <input
                                     type="email"
                                     name="email"
-                                    className="profile-input-field"
+                                    className={`profile-input-field ${errors.email ? 'field-error' : ''} ${formData.email ? 'has-selection' : ''}`}
                                     placeholder="email@example.com"
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
                                 />
+                                {errors.email && <span className="error-text">{errors.email}</span>}
                             </div>
                             <div className="form-field-group">
                                 <label>Phone Number</label>
                                 <input
                                     type="tel"
                                     name="phone"
-                                    className="profile-input-field"
+                                    className={`profile-input-field ${errors.phone ? 'field-error' : ''} ${formData.phone !== '+91' ? 'has-selection' : ''}`}
                                     value={formData.phone}
                                     onChange={handleChange}
                                     required
                                 />
+                                {errors.phone && <span className="error-text">{errors.phone}</span>}
                             </div>
                             <div className="form-field-group">
                                 <label>Gender</label>
-                                <select name="gender" className="profile-select-field" value={formData.gender} onChange={handleChange} required>
+                                <select name="gender" className={`profile-select-field ${formData.gender ? 'has-selection' : ''}`} value={formData.gender} onChange={handleChange} required>
                                     <option value="">Select Gender</option>
                                     {GENDERS.map(g => <option key={g} value={g}>{g}</option>)}
                                 </select>
@@ -152,74 +183,38 @@ const BasicInformation = () => {
                                 <input
                                     type="date"
                                     name="dob"
-                                    className="profile-input-field"
+                                    className={`profile-input-field ${formData.dob ? 'has-selection' : ''}`}
                                     value={formData.dob}
                                     onChange={handleChange}
                                     required
+                                    autoComplete="off"
                                 />
                             </div>
                             <div className="form-field-group">
                                 <label>Height (cm)</label>
-                                <select name="height" className="profile-select-field" value={formData.height} onChange={handleChange} required>
+                                <select
+                                    name="height"
+                                    className={`profile-select-field ${formData.height ? 'has-selection' : ''}`}
+                                    value={formData.height}
+                                    onChange={handleChange}
+                                    required
+                                >
                                     <option value="">Select Height</option>
                                     {heightOptions.map(h => <option key={h} value={h}>{h} cm</option>)}
                                 </select>
                             </div>
                             <div className="form-field-group">
                                 <label>Weight (kg)</label>
-                                <select name="weight" className="profile-select-field" value={formData.weight} onChange={handleChange} required>
+                                <select
+                                    name="weight"
+                                    className={`profile-select-field ${formData.weight ? 'has-selection' : ''}`}
+                                    value={formData.weight}
+                                    onChange={handleChange}
+                                    required
+                                >
                                     <option value="">Select Weight</option>
                                     {weightOptions.map(w => <option key={w} value={w}>{w} kg</option>)}
                                 </select>
-                            </div>
-                        </div>
-
-                        {/* Section 2: Religious Info */}
-                        <div className="section-title-header">
-                            <h3>Religious & Social Background</h3>
-                        </div>
-
-                        <div className="form-grid" style={{ marginBottom: '20px' }}>
-                            <div className="form-field-group">
-                                <label>Religion</label>
-                                <select name="religion" className="profile-select-field" value={formData.religion} onChange={handleChange} required>
-                                    <option value="">Select Religion</option>
-                                    {RELIGIONS.map(r => <option key={r} value={r}>{r}</option>)}
-                                </select>
-                            </div>
-                            <div className="form-field-group">
-                                <label>Community</label>
-                                <select name="community" className="profile-select-field" value={formData.community} onChange={handleChange} required>
-                                    <option value="">Select Community</option>
-                                    {COMMUNITIES.map(c => <option key={c} value={c}>{c}</option>)}
-                                </select>
-                            </div>
-                            <div className="form-field-group">
-                                <label>Caste</label>
-                                <select
-                                    name="caste"
-                                    className="profile-select-field"
-                                    value={formData.caste}
-                                    onChange={handleChange}
-                                    required
-                                    disabled={!formData.community}
-                                >
-                                    <option value="">{formData.community ? 'Select Caste' : 'Select Community first'}</option>
-                                    {formData.community && CASTE_OPTIONS[formData.community]?.map(c => (
-                                        <option key={c} value={c}>{c}</option>
-                                    ))}
-                                </select>
-                            </div>
-                            <div className="form-field-group">
-                                <label>Sub Caste</label>
-                                <input
-                                    type="text"
-                                    name="subCaste"
-                                    className="profile-input-field"
-                                    placeholder="Enter sub caste"
-                                    value={formData.subCaste}
-                                    onChange={handleChange}
-                                />
                             </div>
                         </div>
                     </div>
