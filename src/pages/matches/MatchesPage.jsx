@@ -64,6 +64,26 @@ export const DUMMY_MATCHES = [
         education: 'Chartered Accountant',
         location: 'Nashik, MH',
         matchPct: 90
+    },
+    {
+        id: 7,
+        name: 'Siddharth Verma',
+        age: 29,
+        height: "5'10\"",
+        religion: 'Hindu, Kayastha',
+        education: 'Software Engineer',
+        location: 'Hyderabad, TG',
+        matchPct: 85
+    },
+    {
+        id: 8,
+        name: 'Aditya Rao',
+        age: 30,
+        height: "5'11\"",
+        religion: 'Hindu, Brahmin',
+        education: 'Doctor (MD)',
+        location: 'Chennai, TN',
+        matchPct: 78
     }
 ];
 

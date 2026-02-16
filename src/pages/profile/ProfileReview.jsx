@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './profile.css';
 import backgroundImage from '../../assets/auth/vivah2.jpg';
 
 const ProfileReview = () => {
     const navigate = useNavigate();
-    const [isSubmitted, setIsSubmitted] = useState(false);
 
     const step1Data = JSON.parse(localStorage.getItem('profile_step_1') || '{}');
     const step2Data = JSON.parse(localStorage.getItem('profile_step_2') || '{}');
@@ -14,13 +13,9 @@ const ProfileReview = () => {
     const step5Data = JSON.parse(localStorage.getItem('profile_step_5') || '{}');
 
     const handleGoLive = () => {
-        setIsSubmitted(true);
         // In a real app, this would be an API call
         localStorage.setItem('profile_status', 'Under Review');
-
-        setTimeout(() => {
-            navigate('/dashboard');
-        }, 3000);
+        navigate('/dashboard');
     };
 
     const renderSection = (title, data, editPath) => (
@@ -40,22 +35,7 @@ const ProfileReview = () => {
         </div>
     );
 
-    if (isSubmitted) {
-        return (
-            <div className="profile-page-wrapper">
-                <div className="profile-background" style={{ backgroundImage: `url(${backgroundImage})` }}></div>
-                <div className="profile-background-overlay"></div>
-                <div className="profile-card success-card">
-                    <div className="success-content">
-                        <div className="success-icon">✓</div>
-                        <h2>Submission Successful!</h2>
-                        <p>Your profile has been submitted successfully and is under verification.</p>
-                        <p className="redirect-hint">Redirecting to your dashboard...</p>
-                    </div>
-                </div>
-            </div>
-        );
-    }
+
 
     return (
         <div className="profile-page-wrapper">
@@ -66,7 +46,7 @@ const ProfileReview = () => {
                 <div className="profile-header-section review-header">
                     <div className="status-badge-container">
                         <div className="completion-badge">100% Completed</div>
-                        <div className="live-status-badge pending">Not Live / Pending Verification</div>
+                        <div className="live-status-badge pending">Pending Verification</div>
                     </div>
                     <div className="header-text-info">
                         <h2>Review Your Profile</h2>
@@ -83,7 +63,7 @@ const ProfileReview = () => {
                 </div>
 
                 <div className="form-sticky-footer review-footer">
-                    <button className="save-pill-button" onClick={handleGoLive}>Submit Profile / Go Live</button>
+                    <button className="save-pill-button" onClick={handleGoLive}>Submit Profile</button>
                 </div>
             </div>
         </div>

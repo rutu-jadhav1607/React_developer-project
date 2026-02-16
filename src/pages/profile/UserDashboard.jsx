@@ -54,7 +54,7 @@ const UserDashboard = () => {
     const userName = JSON.parse(localStorage.getItem('profile_step_1') || '{}').fullName || 'Rutuja Jadhav';
 
     return (
-        <div className="profile-page-wrapper">
+        <div className="profile-page-wrapper dashboard-mode">
             <div className="profile-background" style={{ backgroundImage: `url(${backgroundImage})` }}></div>
             <div className="profile-background-overlay"></div>
 

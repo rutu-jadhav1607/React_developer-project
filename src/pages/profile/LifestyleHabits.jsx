@@ -45,7 +45,7 @@ const LifestyleHabits = () => {
 
     const renderRadioGroup = (label, name, options) => (
         <div className="form-field-group">
-            <label>{label}</label>
+            <label className="lifestyle-label-title">{label}</label>
             <div style={{ display: 'flex', gap: '20px', marginTop: '10px', flexWrap: 'wrap' }}>
                 {options.map(opt => (
                     <label key={opt} className="radio-label">

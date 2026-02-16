@@ -39,7 +39,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #FFFFE4;
+    background-color: #FFFFF0;
     opacity: 0.82;
     /* 80-85% opacity as requested */
     z-index: -1;
@@ -63,7 +63,7 @@
 
 /* Header Section */
 .profile-header-section {
-    background-color: #FFFAD1;
+    background-color: #FFFFF0;
     /* Lighter tone for header */
     padding: 30px 40px;
     display: flex;
@@ -219,7 +219,7 @@
 .form-sticky-footer {
     position: sticky;
     bottom: 0;
-    background-color: #FFFFE4;
+    background-color: #FFFFF0;
     /* Sticky footer background */
     border-top: 1px solid #E6E6D8;
     padding: 20px 40px;
@@ -426,7 +426,7 @@
 }
 
 .profile-tag {
-    background-color: #FFFFE4;
+    background-color: #FFFFF0;
     color: #800000;
     padding: 3px 12px;
     border-radius: 12px;
@@ -479,8 +479,7 @@
     font-size: 1.2rem;
     font-weight: 700;
     margin-bottom: 20px;
-    padding-left: 5px;
-    border-left: 4px solid #800000;
+
     line-height: 1;
 }
 
@@ -673,7 +672,7 @@
 }
 
 .card-modern {
-    background: #FFFFE4;
+    background: #FFFFF0;
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
     border: 1px solid #E6E6D8;
@@ -682,7 +681,7 @@
 
 .profile-progress-header {
     padding: 30px 40px;
-    background: #FFFFE4;
+    background: #FFFFF0;
 }
 
 .progress-flex {
@@ -749,7 +748,7 @@
 
 /* Section Card */
 .profile-section-card {
-    background: #FFFFE4;
+    background: #FFFFF0;
     border-radius: 15px;
     border: 1.5px solid #E6E6D8;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -883,4 +882,18 @@
         display: none;
         /* Hide text on mobile, keep icons */
     }
+}
+
+/* Lifestyle Habits Specifics */
+.lifestyle-label-title {
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    color: #2c2c2c;
+    margin-bottom: 8px !important;
+    display: block;
+}
+
+/* Dashboard Specific Centering */
+.profile-page-wrapper.dashboard-mode {
+    align-items: center;
 }
