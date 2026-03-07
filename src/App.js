@@ -9,6 +9,7 @@ import ProfileDetailView from './pages/matches/ProfileDetailView';
 import ShortlistedPage from './pages/matches/ShortlistedPage';
 import LikesPage from './pages/matches/LikesPage';
 import InterestsPage from './pages/matches/InterestsPage';
+import MessagesPage from './pages/messages/MessagesPage';
 import HomePage from './pages/home/HomePage';
 import './App.css';
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="/matches/shortlisted" element={<ShortlistedPage />} />
           <Route path="/matches/likes" element={<LikesPage />} />
           <Route path="/matches/interests" element={<InterestsPage />} />
+          <Route path="/messages" element={<MessagesPage />} />
         </Routes>
       </div>
     </Router>
