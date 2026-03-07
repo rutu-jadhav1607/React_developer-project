@@ -568,7 +568,7 @@ section {
 .sidebar-divider {
     height: 1px;
     background: #eee;
-    margin: 10px 0;
+    margin: 2px 0; /* Minimized margin significantly */
 }
 
 .logout-link {
