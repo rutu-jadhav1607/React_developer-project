@@ -13,6 +13,7 @@ import MessagesPage from './pages/messages/MessagesPage';
 import MapsPage from './pages/matches/MapsPage';
 import ServicesPage from './pages/services/ServicesPage';
 import ServiceDetailsPage from './pages/services/ServiceDetailsPage';
+import HelpPage from './pages/help/HelpPage';
 import HomePage from './pages/home/HomePage';
 import './App.css';
 
@@ -40,6 +41,7 @@ function App() {
           <Route path="/maps" element={<MapsPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/services/:serviceId" element={<ServiceDetailsPage />} />
+          <Route path="/help" element={<HelpPage />} />
         </Routes>
       </div>
     </Router>
