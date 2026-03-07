@@ -1742,9 +1742,8 @@
 
 .services-masonry-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 25px;
-    grid-auto-flow: dense;
 }
 
 /* Service Card Styling */
@@ -1759,14 +1758,10 @@
     background: #fff;
 }
 
-/* Make certain items span wider for masonry effect */
-.item-0, .item-3 {
-    grid-column: span 2;
-}
-
+/* Responsive grid */
 @media (max-width: 768px) {
-    .item-0, .item-3 {
-        grid-column: span 1;
+    .services-masonry-grid {
+        grid-template-columns: 1fr;
     }
 }
 
