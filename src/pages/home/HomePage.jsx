@@ -93,11 +93,17 @@ const HomePage = () => {
 
                 <header className="home-header">
                     {userName ? (
-                        <div className="home-profile-indicator" onClick={toggleSidebar}>
-                            <div className="home-profile-avatar">
-                                {userName.charAt(0).toUpperCase()}
+                        <div className="home-header-actions">
+                            <div className="home-notification-btn" onClick={() => navigate('/dashboard')}>
+                                <span className="notification-icon">🔔</span>
+                                <span className="notification-badge">3</span>
                             </div>
-                            <span className="home-profile-name">Hi, {userName.split(' ')[0]}</span>
+                            <div className="home-profile-indicator" onClick={toggleSidebar}>
+                                <div className="home-profile-avatar">
+                                    {userName.charAt(0).toUpperCase()}
+                                </div>
+                                <span className="home-profile-name">Hi, {userName.split(' ')[0]}</span>
+                            </div>
                         </div>
                     ) : (
                         <button
