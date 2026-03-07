@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import backgroundImage from '../../assets/auth/vivah2.jpg';
 import logo from '../../assets/common/logo.png';
@@ -6,6 +6,26 @@ import './home.css';
 
 const HomePage = () => {
     const navigate = useNavigate();
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [userName, setUserName] = useState('');
+
+    useEffect(() => {
+        // Retrieve the user's name from localStorage if they have registered
+        const step1Data = JSON.parse(localStorage.getItem('profile_step_1') || '{}');
+        if (step1Data.fullName) {
+            setUserName(step1Data.fullName);
+        }
+    }, []);
+
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen);
+    };
+
+    const handleLogout = () => {
+        // Optional: clear specific user data on logout, or just navigate to login
+        setIsSidebarOpen(false);
+        navigate('/login');
+    };
 
     return (
         <div className="home-container">
@@ -16,16 +36,77 @@ const HomePage = () => {
                 }}
             ></div>
 
+            {/* Sidebar Overlay */}
+            <div 
+                className={`sidebar-overlay ${isSidebarOpen ? 'active' : ''}`} 
+                onClick={toggleSidebar}
+            ></div>
+
+            {/* Profile Sidebar */}
+            <div className={`profile-sidebar ${isSidebarOpen ? 'open' : ''}`}>
+                <div className="sidebar-header">
+                    <div className="sidebar-user-info">
+                        <div className="sidebar-avatar-large">
+                            {userName ? userName.charAt(0).toUpperCase() : 'U'}
+                        </div>
+                        <div className="sidebar-user-details">
+                            <h3>{userName || 'User'}</h3>
+                            <span className="premium-badge-sidebar">Premium</span>
+                        </div>
+                    </div>
+                    <button className="close-sidebar-btn" onClick={toggleSidebar}>✕</button>
+                </div>
+
+                <nav className="sidebar-nav-links">
+                    <button onClick={() => navigate('/dashboard')} className="sidebar-link">
+                        <span className="link-icon">👤</span> My Profile
+                    </button>
+                    <button onClick={() => navigate('/matches/shortlisted')} className="sidebar-link">
+                        <span className="link-icon">⭐</span> Shortlist
+                    </button>
+                    <button onClick={() => navigate('/matches/interests')} className="sidebar-link">
+                        <span className="link-icon">❤️</span> Interest
+                    </button>
+                    <button onClick={() => navigate('/matches/likes')} className="sidebar-link">
+                        <span className="link-icon">👍</span> Likes
+                    </button>
+                    <button onClick={() => navigate('/messages')} className="sidebar-link">
+                        <span className="link-icon">💬</span> Chats
+                    </button>
+                    
+                    <div className="sidebar-divider"></div>
+                    
+                    <button onClick={() => navigate('#')} className="sidebar-link">
+                        <span className="link-icon">❓</span> Help
+                    </button>
+                    <button onClick={() => navigate('#')} className="sidebar-link">
+                        <span className="link-icon">🛡️</span> Privacy & Security
+                    </button>
+                    <button onClick={handleLogout} className="sidebar-link logout-link">
+                        <span className="link-icon">🚪</span> Logout
+                    </button>
+                </nav>
+            </div>
+
             {/* Hero Section */}
             <section className="hero-viewport">
 
                 <header className="home-header">
-                    <button
-                        className="registration-btn"
-                        onClick={() => navigate('/register')}
-                    >
-                        Free Registration
-                    </button>
+                    {userName ? (
+                        <div className="home-profile-indicator" onClick={toggleSidebar}>
+                            <div className="home-profile-avatar">
+                                {userName.charAt(0).toUpperCase()}
+                            </div>
+                            <span className="home-profile-name">Hi, {userName.split(' ')[0]}</span>
+                        </div>
+                    ) : (
+                        <button
+                            className="registration-btn"
+                            onClick={() => navigate('/register')}
+                        >
+                            Free Registration
+                        </button>
+                    )}
                 </header>
 
                 <main className="hero-section">
