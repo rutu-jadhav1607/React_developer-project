@@ -2012,11 +2012,52 @@
     color: white;
 }
 
+.sd-hero-title-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 8px;
+}
+
 .sd-hero-content h1 {
     font-size: 2.8rem;
     margin: 0;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     font-weight: 800;
+}
+
+.sd-follow-btn {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.sd-follow-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.sd-follow-btn.followed {
+    background: #800000;
+    border-color: #800000;
+    color: white;
+}
+
+.sd-hero-followers {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    font-weight: 500;
 }
 
 /* Quick Stats Bar */

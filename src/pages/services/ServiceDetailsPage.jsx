@@ -17,6 +17,7 @@ const serviceDataStore = {
         reviews: 128,
         experience: '15+ Years',
         priceRange: '₹500 - ₹2,500 per plate',
+        baseFollowers: 1240,
         description: 'We offer an exquisite culinary journey for your special day. From traditional authentic thalis to modern fusion cuisine, our master chefs curate menus that leave a lasting impression on your guests.',
         features: ['Customizable Menus', 'Live Counters', 'Premium Waitstaff', 'Tasting Sessions'],
         gallery: [
@@ -37,6 +38,7 @@ const serviceDataStore = {
         reviews: 94,
         experience: '8 Years',
         priceRange: '₹15,000 - ₹50,000 Package',
+        baseFollowers: 875,
         description: 'Specializing in intricate traditional and contemporary Mehendi designs. Our HD and Airbrush makeup artists ensure you look flawless and radiant from morning rituals to the evening reception.',
         features: ['Organic Heena', 'Airbrush Makeup', 'Pre-wedding Trials', 'Bridal Party Packages'],
         gallery: [
@@ -57,6 +59,7 @@ const serviceDataStore = {
         reviews: 215,
         experience: 'Est. 1985',
         priceRange: 'Custom Pricing',
+        baseFollowers: 2100,
         description: 'Explore our breathtaking collection of handcrafted Polki, Kundan, and Antique Gold jewellery. We offer both bespoke purchasing and premium rental options for your big day.',
         features: ['Lifetime Polish Guarantee', 'Custom Designs', 'Rental Options Available', 'Certified Gemstones'],
         gallery: [
@@ -76,6 +79,7 @@ const serviceDataStore = {
         reviews: 156,
         experience: '12 Years',
         priceRange: '₹80,000 - ₹3,00,000',
+        baseFollowers: 1560,
         description: 'We do not just take photos; we capture emotions. Our candid photography and cinematic wedding films ensure your memories are preserved beautifully for generations.',
         features: ['Candid Photography', 'Cinematic Teasers', 'Drone Shoots', 'Premium Photobooks'],
         gallery: [
@@ -95,6 +99,7 @@ const serviceDataStore = {
         reviews: 89,
         experience: 'Premium Properties',
         priceRange: '₹5L - ₹20L per day',
+        baseFollowers: 930,
         description: 'From sprawling green lawns and poolside areas to grand crystal ballrooms, our venues offer the perfect luxurious backdrop for your intimate ceremonies and grand receptions.',
         features: ['In-house Decor', 'Valet Parking', 'Bridal Suites', 'Power Backup'],
         gallery: [
@@ -117,6 +122,9 @@ const ServiceDetailsPage = () => {
     // Added state to hold the 'uploaded' dummy photo
     const [userPhotos, setUserPhotos] = useState([]);
     
+    // Follow State
+    const [isFollowed, setIsFollowed] = useState(false);
+
     // Simulate photo upload
     const handlePhotoUpload = (e) => {
         const file = e.target.files[0];
@@ -125,6 +133,16 @@ const ServiceDetailsPage = () => {
             const newPhotoUrl = URL.createObjectURL(file);
             setUserPhotos([...userPhotos, newPhotoUrl]);
         }
+    };
+
+    const toggleFollow = () => {
+        setIsFollowed(!isFollowed);
+    };
+
+    const getFollowerCount = () => {
+        if (!service) return 0;
+        const count = service.baseFollowers + (isFollowed ? 1 : 0);
+        return count >= 1000 ? `${(count / 1000).toFixed(1)}k` : count;
     };
 
     if (!service) {
@@ -149,7 +167,19 @@ const ServiceDetailsPage = () => {
                         ← Back to Services
                     </div>
                     <div className="sd-hero-content">
-                        <h1>{service.title}</h1>
+                        <div className="sd-hero-title-row">
+                            <h1>{service.title}</h1>
+                            <button
+                                className={`sd-follow-btn ${isFollowed ? 'followed' : ''}`}
+                                onClick={toggleFollow}
+                            >
+                                {isFollowed ? '✔ Following' : '+ Follow'}
+                            </button>
+                        </div>
+                        <div className="sd-hero-followers">
+                            <span className="sd-followers-icon">👥</span>
+                            <span>{getFollowerCount()} followers</span>
+                        </div>
                     </div>
                 </div>
 

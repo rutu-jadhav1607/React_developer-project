@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../profile/profile.css';
 
@@ -19,59 +19,37 @@ const ServicesPage = () => {
             title: 'Catering Services',
             description: 'Exquisite culinary experiences for your special day.',
             image: cateringImg,
-            icon: '🍽️',
-            baseFollowers: 1240,
-            badge: 'Top Rated'
+            icon: '🍽️'
         },
         {
             id: 'mehendi',
             title: 'Mehendi & Makeup',
             description: 'Professional artists to make you shine.',
             image: mehendiImg,
-            icon: '🎨',
-            baseFollowers: 875,
-            badge: 'Trending'
+            icon: '🎨'
         },
         {
             id: 'jewellery',
             title: 'Bridal Jewellery',
             description: 'Stunning collections for the perfect matrimonial look.',
             image: jewelleryImg,
-            icon: '💎',
-            baseFollowers: 2100,
-            badge: 'Premium'
+            icon: '💎'
         },
         {
             id: 'photography',
             title: 'Photography',
             description: 'Capture your timeless memories perfectly.',
             image: photographyImg,
-            icon: '📸',
-            baseFollowers: 1560,
-            badge: 'Popular'
+            icon: '📸'
         },
         {
             id: 'venue',
             title: 'Wedding Venues',
             description: 'Beautiful locations for your dream wedding.',
             image: venueImg,
-            icon: '🏰',
-            baseFollowers: 930,
-            badge: 'New'
+            icon: '🏰'
         }
     ];
-
-    const [followed, setFollowed] = useState({});
-
-    const toggleFollow = (e, serviceId) => {
-        e.stopPropagation(); // prevent card click/navigate
-        setFollowed(prev => ({ ...prev, [serviceId]: !prev[serviceId] }));
-    };
-
-    const getFollowerCount = (service) => {
-        const count = service.baseFollowers + (followed[service.id] ? 1 : 0);
-        return count >= 1000 ? `${(count / 1000).toFixed(1)}k` : count;
-    };
 
     return (
         <div className="profile-page-wrapper services-mode">
@@ -99,28 +77,10 @@ const ServicesPage = () => {
                                 <div className="service-img-overlay"></div>
                                 <img src={service.image} alt={service.title} className="service-bg-img" />
 
-                                {/* Badge top-left */}
-                                <div className="service-category-badge">{service.badge}</div>
-
-                                {/* Follow button top-right */}
-                                <button
-                                    className={`service-follow-btn ${followed[service.id] ? 'followed' : ''}`}
-                                    onClick={(e) => toggleFollow(e, service.id)}
-                                >
-                                    {followed[service.id] ? '✔ Following' : '+ Follow'}
-                                </button>
-
                                 <div className="service-card-content">
                                     <div className="service-icon-badge">{service.icon}</div>
                                     <h3>{service.title}</h3>
                                     <p>{service.description}</p>
-
-                                    {/* Follower count */}
-                                    <div className="service-followers-row">
-                                        <span className="service-followers-icon">👥</span>
-                                        <span className="service-followers-count">{getFollowerCount(service)} followers</span>
-                                    </div>
-
                                     <button className="explore-service-btn">Explore Vendors</button>
                                 </div>
                             </div>
