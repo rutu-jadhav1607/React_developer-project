@@ -10,6 +10,7 @@ import ShortlistedPage from './pages/matches/ShortlistedPage';
 import LikesPage from './pages/matches/LikesPage';
 import InterestsPage from './pages/matches/InterestsPage';
 import MessagesPage from './pages/messages/MessagesPage';
+import MapsPage from './pages/matches/MapsPage';
 import HomePage from './pages/home/HomePage';
 import './App.css';
 
@@ -34,6 +35,7 @@ function App() {
           <Route path="/matches/likes" element={<LikesPage />} />
           <Route path="/matches/interests" element={<InterestsPage />} />
           <Route path="/messages" element={<MessagesPage />} />
+          <Route path="/maps" element={<MapsPage />} />
         </Routes>
       </div>
     </Router>

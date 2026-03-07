@@ -109,6 +109,12 @@ const UserDashboard = () => {
                             {counts.likes > 0 && <span className="count-badge">{counts.likes}</span>}
                         </div>
 
+                        <div className="action-card highlight-map" onClick={() => navigate('/maps')}>
+                            <div className="action-icon map-icon-anim">🗺️</div>
+                            <h4>Nearby</h4>
+                            <span className="premium-badge-small">Pro</span>
+                        </div>
+
                         <div className="action-card" onClick={() => navigate('/messages')}>
                             <div className="action-icon">💬</div>
                             <h4>Chats</h4>
