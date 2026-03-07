@@ -12,6 +12,7 @@ import InterestsPage from './pages/matches/InterestsPage';
 import MessagesPage from './pages/messages/MessagesPage';
 import MapsPage from './pages/matches/MapsPage';
 import ServicesPage from './pages/services/ServicesPage';
+import ServiceDetailsPage from './pages/services/ServiceDetailsPage';
 import HomePage from './pages/home/HomePage';
 import './App.css';
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="/messages" element={<MessagesPage />} />
           <Route path="/maps" element={<MapsPage />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/:serviceId" element={<ServiceDetailsPage />} />
         </Routes>
       </div>
     </Router>

@@ -69,7 +69,11 @@ const ServicesPage = () => {
                 <div className="services-grid-wrapper">
                     <div className="services-masonry-grid">
                         {services.map((service, index) => (
-                            <div key={service.id} className={`service-display-card item-${index}`}>
+                            <div 
+                                key={service.id} 
+                                className={`service-display-card item-${index}`}
+                                onClick={() => navigate(`/services/${service.id}`)}
+                            >
                                 <div className="service-img-overlay"></div>
                                 <img src={service.image} alt={service.title} className="service-bg-img" />
                                 

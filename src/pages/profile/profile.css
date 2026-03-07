@@ -1912,3 +1912,395 @@
     40% { transform: scale(1.3) translateY(-10px); }
     100% { transform: scale(1) translateY(0); }
 }
+
+/* =========================================
+   Service Details Page UI Styles 
+   ========================================= */
+
+.service-details-mode {
+    padding-top: 0; /* Reset for hero image */
+}
+
+.sd-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+
+/* Hero Section */
+.sd-hero {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    border-radius: 0 0 30px 30px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    margin-bottom: -40px; /* Overlap with stats bar */
+    z-index: 1;
+}
+
+.sd-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sd-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.8) 100%);
+}
+
+.sd-back-btn {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(5px);
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: background 0.2s;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.sd-back-btn:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.sd-hero-content {
+    position: absolute;
+    bottom: 60px;
+    left: 40px;
+    color: white;
+}
+
+.sd-hero-content h1 {
+    font-size: 2.8rem;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-weight: 800;
+}
+
+/* Quick Stats Bar */
+.sd-stats-bar {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(15px);
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+    padding: 25px;
+    box-shadow: 0 15px 40px rgba(128, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.sd-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.sd-stat-icon {
+    font-size: 2rem;
+    background: #fdf5f5;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.sd-stat-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.sd-stat-text strong {
+    font-size: 1.1rem;
+    color: #800000;
+}
+
+.sd-stat-text span {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Content Grid Setup */
+.sd-content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-top: 40px;
+    padding: 0 20px;
+}
+
+@media (max-width: 900px) {
+    .sd-content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* General Glass Card for Sections */
+.card-glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+}
+
+.card-glass h3 {
+    margin-top: 0;
+    color: #800000;
+    border-bottom: 2px solid #f2e6e6;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
+
+.card-glass p {
+    color: #444;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Features List */
+.sd-features-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.sd-features-list li {
+    font-size: 0.95rem;
+    color: #333;
+    background: #fdfdfd;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+/* Gallery Region */
+.sd-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f2e6e6;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.sd-section-header h3 {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.upload-photo-btn {
+    background: #ffc107;
+    color: #800000;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.upload-photo-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.sd-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.sd-gallery-item {
+    border-radius: 12px;
+    overflow: hidden;
+    height: 180px;
+    position: relative;
+}
+
+.sd-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.sd-gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.user-uploaded {
+    border: 2px solid #ffc107;
+}
+
+.uploaded-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ffc107;
+    color: #800000;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 10px;
+}
+
+/* Reviews Styling */
+.sd-reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sd-review-card {
+    background: #fcfcfc;
+    border: 1px solid #f0f0f0;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.reviewer-avatar {
+    width: 45px;
+    height: 45px;
+    background: #800000;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 50%;
+}
+
+.reviewer-info h5 {
+    margin: 0 0 5px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.review-stars {
+    color: #ffc107;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+}
+
+.sd-review-card p {
+    font-style: italic;
+    color: #555;
+    margin: 0;
+}
+
+/* Sticky Right Sidebar */
+.sd-action-box {
+    position: sticky;
+    top: 30px;
+}
+
+.sd-action-box h3 {
+    font-size: 1.6rem;
+}
+
+.sd-action-box p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.sd-primary-btn {
+    width: 100%;
+    background: #800000;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    margin-bottom: 15px;
+}
+
+.sd-primary-btn:hover {
+    background: #600000;
+    transform: translateY(-2px);
+}
+
+.sd-secondary-btn {
+    width: 100%;
+    background: transparent;
+    color: #800000;
+    border: 2px solid #800000;
+    padding: 13px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sd-secondary-btn:hover {
+    background: rgba(128, 0, 0, 0.05);
+}
+
+.sd-divider {
+    border: 0;
+    height: 1px;
+    background: #e6e6e6;
+    margin: 25px 0;
+}
+
+.sd-guarantee {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    background: #fbf5f5;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #800000;
+}
+
+.guarantee-icon {
+    font-size: 1.5rem;
+}
+
+.sd-guarantee strong {
+    display: block;
+    color: #800000;
+    font-size: 0.95rem;
+    margin-bottom: 3px;
+}
+
+.sd-guarantee span {
+    font-size: 0.8rem;
+    color: #666;
+}
