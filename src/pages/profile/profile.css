@@ -2661,4 +2661,169 @@
 .danger-zone-card .privacy-card-header h3 {
     color: #c00;
 }
+
+/* =========================================
+   Dashboard Connections Card
+   ========================================= */
+
+.connections-card {
+    background: white;
+    border-radius: 20px;
+    padding: 25px 30px;
+    box-shadow: 0 8px 30px rgba(128, 0, 0, 0.07);
+    border: 1px solid #E6E6D8;
+}
+
+.connections-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.connections-title-block {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.connections-icon {
+    font-size: 2rem;
+}
+
+.connections-title-block h3 {
+    margin: 0 0 3px;
+    color: #800000;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.connections-title-block p {
+    margin: 0;
+    font-size: 0.82rem;
+    color: #888;
+}
+
+.connections-count-pill {
+    background: #fff5f5;
+    color: #800000;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid #f0d0d0;
+    white-space: nowrap;
+}
+
+/* Stats Row */
+.connections-stats-row {
+    display: flex;
+    align-items: center;
+    background: #fdfafa;
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 22px;
+    border: 1px solid #f0e8e8;
+    gap: 0;
+}
+
+.conn-stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.conn-stat strong {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #800000;
+    line-height: 1;
+}
+
+.conn-stat span {
+    font-size: 0.75rem;
+    color: #888;
+    text-align: center;
+}
+
+.conn-stat-divider {
+    width: 1px;
+    height: 36px;
+    background: #e6d8d8;
+    flex-shrink: 0;
+}
+
+/* Profile Chips Row */
+.connections-profiles-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.conn-profile-chip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.conn-profile-chip:hover {
+    transform: translateY(-3px);
+}
+
+.conn-avatar-wrap {
+    position: relative;
+    width: 54px;
+    height: 54px;
+}
+
+.conn-avatar-wrap img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #800000;
+    box-shadow: 0 4px 10px rgba(128, 0, 0, 0.12);
+}
+
+.conn-dot {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.conn-dot.online { background: #4CAF50; }
+.conn-dot.offline { background: #bbb; }
+
+.conn-profile-chip > span {
+    font-size: 0.75rem;
+    color: #555;
+    font-weight: 500;
+}
+
+.conn-view-all {
+    margin-left: auto;
+    color: #800000;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 8px 18px;
+    border: 1.5px solid #800000;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+}
+
+.conn-view-all:hover {
+    background: #800000;
+    color: white;
+}
 
