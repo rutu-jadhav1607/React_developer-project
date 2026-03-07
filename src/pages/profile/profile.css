@@ -1936,7 +1936,7 @@
     border-radius: 0 0 30px 30px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    margin-bottom: -40px; /* Overlap with stats bar */
+    margin-bottom: -150px; /* Greatly increased overlap to push stats bar down even further */
     z-index: 1;
 }
 
@@ -1974,7 +1974,7 @@
 
 .sd-hero-content {
     position: absolute;
-    bottom: 60px;
+    bottom: 160px; /* Moved text even higher to stay inside the image bounds above the lowered card */
     left: 40px;
     color: white;
 }
@@ -1990,11 +1990,11 @@
 .sd-stats-bar {
     position: relative;
     z-index: 2;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(15px);
     width: 90%;
     max-width: 900px;
-    margin: 0 auto;
+    margin: 0 auto 35px auto; /* Reset top margin, relying on hero's negative bottom margin */
     border-radius: 20px;
     display: flex;
     justify-content: space-around;
