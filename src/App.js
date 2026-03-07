@@ -9,6 +9,7 @@ import ProfileDetailView from './pages/matches/ProfileDetailView';
 import ShortlistedPage from './pages/matches/ShortlistedPage';
 import LikesPage from './pages/matches/LikesPage';
 import InterestsPage from './pages/matches/InterestsPage';
+import ConnectionsPage from './pages/matches/ConnectionsPage';
 import MessagesPage from './pages/messages/MessagesPage';
 import MapsPage from './pages/matches/MapsPage';
 import ServicesPage from './pages/services/ServicesPage';
@@ -38,6 +39,7 @@ function App() {
           <Route path="/matches/shortlisted" element={<ShortlistedPage />} />
           <Route path="/matches/likes" element={<LikesPage />} />
           <Route path="/matches/interests" element={<InterestsPage />} />
+          <Route path="/connections" element={<ConnectionsPage />} />
           <Route path="/messages" element={<MessagesPage />} />
           <Route path="/maps" element={<MapsPage />} />
           <Route path="/services" element={<ServicesPage />} />

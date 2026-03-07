@@ -121,6 +121,12 @@ const UserDashboard = () => {
                             <span className="count-badge">3</span>
                         </div>
 
+                        <div className="action-card" onClick={() => navigate('/connections')}>
+                            <div className="action-icon">🤝</div>
+                            <h4>Connections</h4>
+                            {counts.interestsSent > 0 && <span className="count-badge">{counts.interestsSent}</span>}
+                        </div>
+
                         <div className="action-card highlight-vendor" onClick={() => navigate('/services')}>
                             <div className="action-icon bounce-anim">🎊</div>
                             <h4>Services</h4>
@@ -132,61 +138,6 @@ const UserDashboard = () => {
                     <div className="locked-feature-note minimal">
                         <span className="lock-icon">🔒</span>
                         Advanced search options will be available after final verification.
-                    </div>
-
-                    {/* Connections Section */}
-                    <div className="connections-card">
-                        <div className="connections-card-header">
-                            <div className="connections-title-block">
-                                <span className="connections-icon">🤝</span>
-                                <div>
-                                    <h3>My Connections</h3>
-                                    <p>People who accepted your interest</p>
-                                </div>
-                            </div>
-                            <span className="connections-count-pill">{counts.interestsSent || 0} Connected</span>
-                        </div>
-
-                        <div className="connections-stats-row">
-                            <div className="conn-stat">
-                                <strong>{counts.interestsSent || 0}</strong>
-                                <span>Interests Sent</span>
-                            </div>
-                            <div className="conn-stat-divider"></div>
-                            <div className="conn-stat">
-                                <strong>{counts.interestsReceived || 2}</strong>
-                                <span>Interests Received</span>
-                            </div>
-                            <div className="conn-stat-divider"></div>
-                            <div className="conn-stat">
-                                <strong>{counts.likes || 0}</strong>
-                                <span>Liked You</span>
-                            </div>
-                            <div className="conn-stat-divider"></div>
-                            <div className="conn-stat">
-                                <strong>{counts.shortlisted || 0}</strong>
-                                <span>Shortlisted</span>
-                            </div>
-                        </div>
-
-                        <div className="connections-profiles-row">
-                            {[
-                                { name: 'Priya S.', img: 'https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=100', status: 'online' },
-                                { name: 'Anjali R.', img: 'https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=100', status: 'offline' },
-                                { name: 'Meera K.', img: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=100', status: 'online' },
-                            ].map((person, i) => (
-                                <div key={i} className="conn-profile-chip" onClick={() => navigate('/matches')}>
-                                    <div className="conn-avatar-wrap">
-                                        <img src={person.img} alt={person.name} />
-                                        <span className={`conn-dot ${person.status}`}></span>
-                                    </div>
-                                    <span>{person.name}</span>
-                                </div>
-                            ))}
-                            <div className="conn-view-all" onClick={() => navigate('/matches')}>
-                                View All →
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

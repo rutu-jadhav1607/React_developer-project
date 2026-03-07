@@ -2826,4 +2826,152 @@
     background: #800000;
     color: white;
 }
+
+/* =========================================
+   Connections Page Styles
+   ========================================= */
+
+.connections-banner {
+    background: linear-gradient(135deg, #800000 0%, #a00000 100%);
+    border-radius: 16px;
+    padding: 18px 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 0 15px;
+    box-shadow: 0 8px 25px rgba(128, 0, 0, 0.25);
+}
+
+.connections-banner-count {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: white;
+    line-height: 1;
+}
+
+.connections-banner-label {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.connections-page-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 0 15px;
+}
+
+.connection-person-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    box-shadow: 0 8px 25px rgba(128, 0, 0, 0.07);
+    border: 1px solid rgba(230, 230, 216, 0.8);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.connection-person-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(128, 0, 0, 0.13);
+    border-color: rgba(128, 0, 0, 0.2);
+}
+
+.cp-avatar-wrap {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.cp-avatar-wrap img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #800000;
+    box-shadow: 0 4px 12px rgba(128, 0, 0, 0.2);
+}
+
+.cp-status-dot {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.cp-status-dot.online { background: #4CAF50; }
+.cp-status-dot.offline { background: #bbb; }
+
+.cp-info h4 {
+    margin: 0 0 4px;
+    color: #800000;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.cp-info p {
+    margin: 0 0 2px;
+    color: #555;
+    font-size: 0.85rem;
+}
+
+.cp-profession {
+    color: #888 !important;
+    font-size: 0.8rem !important;
+}
+
+.cp-connected-date {
+    display: inline-block;
+    font-size: 0.72rem;
+    color: #aaa;
+    margin-top: 4px;
+}
+
+.cp-actions {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-top: 4px;
+}
+
+.cp-btn-chat {
+    flex: 1;
+    background: #800000;
+    color: white;
+    border: none;
+    padding: 9px 0;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.cp-btn-chat:hover { background: #6a0000; }
+
+.cp-btn-view {
+    flex: 1;
+    background: transparent;
+    color: #800000;
+    border: 1.5px solid #800000;
+    padding: 9px 0;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.cp-btn-view:hover {
+    background: #800000;
+    color: white;
+}
 
