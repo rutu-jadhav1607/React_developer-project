@@ -79,7 +79,7 @@ const HomePage = () => {
                     <button onClick={() => { setIsSidebarOpen(false); navigate('/help'); }} className="sidebar-link">
                         <span className="link-icon">❓</span> Help
                     </button>
-                    <button onClick={() => navigate('#')} className="sidebar-link">
+                    <button onClick={() => { setIsSidebarOpen(false); navigate('/privacy'); }} className="sidebar-link">
                         <span className="link-icon">🛡️</span> Privacy & Security
                     </button>
                     <button onClick={handleLogout} className="sidebar-link logout-link">

@@ -14,6 +14,7 @@ import MapsPage from './pages/matches/MapsPage';
 import ServicesPage from './pages/services/ServicesPage';
 import ServiceDetailsPage from './pages/services/ServiceDetailsPage';
 import HelpPage from './pages/help/HelpPage';
+import PrivacySecurityPage from './pages/privacy/PrivacySecurityPage';
 import HomePage from './pages/home/HomePage';
 import './App.css';
 
@@ -42,6 +43,7 @@ function App() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/services/:serviceId" element={<ServiceDetailsPage />} />
           <Route path="/help" element={<HelpPage />} />
+          <Route path="/privacy" element={<PrivacySecurityPage />} />
         </Routes>
       </div>
     </Router>

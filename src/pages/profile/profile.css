@@ -2499,4 +2499,166 @@
     font-size: 0.95rem;
     line-height: 1.6;
     margin: 0;
-}
+}
+
+/* =========================================
+   Privacy & Security Page Styles
+   ========================================= */
+
+.privacy-card {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 25px 30px;
+    box-shadow: 0 8px 30px rgba(128, 0, 0, 0.07);
+    border: 1px solid rgba(230, 230, 216, 0.8);
+    margin: 0 15px;
+}
+
+.privacy-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0ece8;
+}
+
+.privacy-section-icon {
+    font-size: 1.6rem;
+}
+
+.privacy-card-header h3 {
+    color: #800000;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.privacy-settings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.privacy-setting-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #f5f0ee;
+    gap: 20px;
+}
+
+.privacy-setting-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.privacy-setting-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.privacy-setting-info strong {
+    color: #333;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.privacy-setting-info span {
+    color: #888;
+    font-size: 0.82rem;
+}
+
+/* Toggle Switch */
+.privacy-toggle {
+    width: 50px;
+    height: 26px;
+    border-radius: 13px;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    transition: background 0.3s ease;
+}
+
+.privacy-toggle.on {
+    background: #800000;
+}
+
+.privacy-toggle.off {
+    background: #ddd;
+}
+
+.privacy-toggle-knob {
+    position: absolute;
+    top: 3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: left 0.3s ease;
+}
+
+.privacy-toggle.on .privacy-toggle-knob {
+    left: 27px;
+}
+
+.privacy-toggle.off .privacy-toggle-knob {
+    left: 3px;
+}
+
+/* Action Buttons */
+.privacy-action-btn {
+    background: rgba(128, 0, 0, 0.06);
+    color: #800000;
+    border: 1px solid rgba(128, 0, 0, 0.2);
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.privacy-action-btn:hover {
+    background: rgba(128, 0, 0, 0.12);
+}
+
+.privacy-action-btn.warning-btn {
+    background: rgba(255, 165, 0, 0.08);
+    color: #b36200;
+    border-color: rgba(255, 165, 0, 0.3);
+}
+
+.privacy-action-btn.warning-btn:hover {
+    background: rgba(255, 165, 0, 0.15);
+}
+
+.privacy-action-btn.danger-btn {
+    background: rgba(200, 0, 0, 0.07);
+    color: #c00;
+    border-color: rgba(200, 0, 0, 0.25);
+}
+
+.privacy-action-btn.danger-btn:hover {
+    background: rgba(200, 0, 0, 0.15);
+}
+
+/* Danger Zone Card */
+.danger-zone-card {
+    border: 1px solid rgba(200, 0, 0, 0.2);
+}
+
+.danger-zone-card .privacy-card-header {
+    border-bottom-color: rgba(200, 0, 0, 0.1);
+}
+
+.danger-zone-card .privacy-card-header h3 {
+    color: #c00;
+}
+
