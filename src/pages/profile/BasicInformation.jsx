@@ -87,9 +87,16 @@ const BasicInformation = () => {
         navigate('/profile/religious-info');
     };
 
-    // Range helpers
+    // Generate height options in feet & inches (4'6" to 7'0")
+    const heightOptions = [];
+    for (let feet = 4; feet <= 7; feet++) {
+        const maxInches = feet === 7 ? 0 : 11;
+        const minInches = feet === 4 ? 6 : 0;
+        for (let inches = minInches; inches <= maxInches; inches++) {
+            heightOptions.push(`${feet}'${inches}"`);
+        }
+    }
     const range = (start, end) => Array.from({ length: end - start + 1 }, (_, i) => start + i);
-    const heightOptions = range(140, 220);
     const weightOptions = range(40, 150);
 
     // Circular Progress Params
@@ -191,7 +198,7 @@ const BasicInformation = () => {
                                 />
                             </div>
                             <div className="form-field-group">
-                                <label>Height (cm)</label>
+                                <label>Height</label>
                                 <select
                                     name="height"
                                     className={`profile-select-field ${formData.height ? 'has-selection' : ''}`}
@@ -200,7 +207,7 @@ const BasicInformation = () => {
                                     required
                                 >
                                     <option value="">Select Height</option>
-                                    {heightOptions.map(h => <option key={h} value={h}>{h} cm</option>)}
+                                    {heightOptions.map(h => <option key={h} value={h}>{h}</option>)}
                                 </select>
                             </div>
                             <div className="form-field-group">
