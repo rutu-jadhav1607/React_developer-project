@@ -120,6 +120,12 @@ const UserDashboard = () => {
                             <h4>Chats</h4>
                             <span className="count-badge">3</span>
                         </div>
+
+                        <div className="action-card highlight-vendor" onClick={() => navigate('/services')}>
+                            <div className="action-icon bounce-anim">🎊</div>
+                            <h4>Services</h4>
+                            <span className="premium-badge-small">New</span>
+                        </div>
                     </div>
 
                     {/* Subtle Information Note */}
